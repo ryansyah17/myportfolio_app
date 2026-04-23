@@ -28,6 +28,10 @@ func main() {
     db.AutoMigrate(
         &domain.Portfolio{},
         &domain.User{},
+        &domain.Education{},
+        &domain.WorkHistory{},
+        &domain.Blog{},
+        &domain.Contact{},
     )
 
     // ── Dependency Injection ──────────────────────────────
@@ -40,6 +44,26 @@ func main() {
     userRepo    := repository.NewUserRepository(db)
     authUsecase := usecase.NewAuthUsecase(userRepo)
     authHandler := handler.NewAuthHandler(authUsecase)
+    
+    // ── Education ──────────────────────────────────────
+    educationRepo    := repository.NewEducationRepository(db)
+    educationUsecase := usecase.NewEducationUsecase(educationRepo)
+    educationHandler := handler.NewEducationHandler(educationUsecase)
+    
+    // ── Work History ───────────────────────────────────
+    workHistoryRepo    := repository.NewWorkHistoryRepository(db)
+    workHistoryUsecase := usecase.NewWorkHistoryUsecase(workHistoryRepo)
+    workHandler := handler.NewWorkHistoryHandler(workHistoryUsecase)
+    
+    // ── Blog ───────────────────────────────────────────
+    blogRepo    := repository.NewBlogRepository(db)
+    blogUsecase := usecase.NewBlogUsecase(blogRepo)
+    blogHandler := handler.NewBlogHandler(blogUsecase)
+    
+    // ── Contact ────────────────────────────────────────
+    contactRepo    := repository.NewContactRepository(db)
+    contactUsecase := usecase.NewContactUsecase(contactRepo)
+    contactHandler := handler.NewContactHandler(contactUsecase)
     // ─────────────────────────────────────────────────────
 
     r := gin.Default()
@@ -83,6 +107,50 @@ func main() {
             portfolios.PUT("/:id", portfolioHandler.Update)
             portfolios.DELETE("/:id", portfolioHandler.Delete)
         }
+
+        // Education
+        education := api.Group("/education")
+        {
+            education.GET("", educationHandler.GetAll)
+            education.GET("/:id", educationHandler.GetByID)
+            education.Use(middleware.AuthMiddleware())
+            education.POST("", educationHandler.Create)
+            education.PUT("/:id", educationHandler.Update)
+            education.DELETE("/:id", educationHandler.Delete)
+        }
+
+        // Work History
+        work := api.Group("/work")
+        {
+            work.GET("", workHandler.GetAll)
+            work.GET("/:id", workHandler.GetByID)
+            work.Use(middleware.AuthMiddleware())
+            work.POST("", workHandler.Create)
+            work.PUT("/:id", workHandler.Update)
+            work.DELETE("/:id", workHandler.Delete)
+        }
+
+        // Blog
+        blogs := api.Group("/blogs")
+        {
+            blogs.GET("", blogHandler.GetAll)
+            blogs.GET("/slug/:slug", blogHandler.GetBySlug)
+            blogs.GET("/:id", blogHandler.GetByID)
+            blogs.Use(middleware.AuthMiddleware())
+            blogs.POST("", blogHandler.Create)
+            blogs.PUT("/:id", blogHandler.Update)
+            blogs.DELETE("/:id", blogHandler.Delete)
+        }
+
+        // Contact
+        contacts := api.Group("/contacts")
+        {
+            contacts.POST("", contactHandler.Send)     // public — siapa saja bisa kirim
+    contacts.Use(middleware.AuthMiddleware())
+    contacts.GET("", contactHandler.GetAll)
+    contacts.PUT("/:id/read", contactHandler.MarkAsRead)
+    contacts.DELETE("/:id", contactHandler.Delete)
+}
     }
 
     fmt.Printf("🚀 Server berjalan di http://localhost:%s\n", cfg.AppPort)

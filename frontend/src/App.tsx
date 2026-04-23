@@ -1,18 +1,19 @@
-import { Routes, Route } from 'react-router-dom'
-import Layout from './components/layout/Layout'
-import AdminLayout from './components/layout/AdminLayout'
-import ProtectedRoute from './components/layout/ProtectedRoute'
+import { Routes, Route } from "react-router-dom";
+import Layout from "./components/layout/Layout";
+import AdminLayout from "./components/layout/AdminLayout";
+import ProtectedRoute from "./components/layout/ProtectedRoute";
 
 // Public pages
-import HomePage from './pages/public/HomePage'
-import PortfolioPage from './pages/public/PortfolioPage'
-import AboutPage from './pages/public/AboutPage'
-import BlogPage from './pages/public/BlogPage'
-import ContactPage from './pages/public/ContactPage'
+import HomePage from "./pages/public/HomePage";
+import PortfolioPage from "./pages/public/PortfolioPage";
+import AboutPage from "./pages/public/AboutPage";
+import BlogPage from "./pages/public/BlogPage";
+import ContactPage from "./pages/public/ContactPage";
 
 // Admin pages
-import LoginPage from './pages/admin/LoginPage'
-import DashboardPage from './pages/admin/DashboardPage'
+import LoginPage from "./pages/admin/LoginPage";
+import DashboardPage from "./pages/admin/DashboardPage";
+import BlogDetailPage from "./pages/public/BlogDetailPage";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Route path="/about" element={<AboutPage />} />
         <Route path="/blog" element={<BlogPage />} />
         <Route path="/contact" element={<ContactPage />} />
+        <Route path="/blog/:slug" element={<BlogDetailPage />} />
       </Route>
 
       {/* ── Admin Login (tidak pakai Layout publik) ── */}
@@ -37,7 +39,7 @@ function App() {
         </Route>
       </Route>
     </Routes>
-  )
+  );
 }
 
-export default App
+export default App;
