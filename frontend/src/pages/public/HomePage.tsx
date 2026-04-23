@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next'
 import { usePortfolios } from '../../hooks/usePortfolio'
 import PortfolioCard from '../../components/ui/PortfolioCard'
 import Loading from '../../components/ui/Loading'
+import SEO from '../../components/ui/SEO'
 
 const HomePage = () => {
   const { t } = useTranslation()
@@ -10,7 +11,12 @@ const HomePage = () => {
   const featured = portfolios?.filter((p) => p.is_featured).slice(0, 3)
 
   return (
+
     <div>
+      <SEO
+        title="Home"
+        description="Ryansyah Putra — Flutter Developer yang sedang belajar Go & React."
+      />
       {/* Hero */}
       <section className="max-w-6xl mx-auto px-6 py-24 flex flex-col items-center text-center">
         <div className="bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 text-sm font-medium px-4 py-1 rounded-full mb-6">

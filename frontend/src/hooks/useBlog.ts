@@ -1,5 +1,6 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
 import { blogService } from '../services/blogService'
+import toast from 'react-hot-toast'
 import type { Blog } from '../types'
 
 export const useBlogs = (all = false) => useQuery({
@@ -17,7 +18,11 @@ export const useCreateBlog = () => {
   const qc = useQueryClient()
   return useMutation({
     mutationFn: blogService.create,
-    onSuccess: () => qc.invalidateQueries({ queryKey: ['blogs'] }),
+    onSuccess: () => {
+      qc.invalidateQueries({ queryKey: ['blogs'] })
+      toast.success('Artikel berhasil disimpan!')
+    },
+    onError: () => toast.error('Gagal menyimpan artikel.'),
   })
 }
 
@@ -26,7 +31,11 @@ export const useUpdateBlog = () => {
   return useMutation({
     mutationFn: ({ id, data }: { id: number; data: Omit<Blog, 'id' | 'created_at' | 'updated_at'> }) =>
       blogService.update(id, data),
-    onSuccess: () => qc.invalidateQueries({ queryKey: ['blogs'] }),
+    onSuccess: () => {
+      qc.invalidateQueries({ queryKey: ['blogs'] })
+      toast.success('Artikel berhasil diupdate!')
+    },
+    onError: () => toast.error('Gagal mengupdate artikel.'),
   })
 }
 
@@ -34,6 +43,10 @@ export const useDeleteBlog = () => {
   const qc = useQueryClient()
   return useMutation({
     mutationFn: blogService.delete,
-    onSuccess: () => qc.invalidateQueries({ queryKey: ['blogs'] }),
+    onSuccess: () => {
+      qc.invalidateQueries({ queryKey: ['blogs'] })
+      toast.success('Artikel berhasil dihapus.')
+    },
+    onError: () => toast.error('Gagal menghapus artikel.'),
   })
 }

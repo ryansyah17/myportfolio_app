@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { contactService } from '../../services/contactService'
+import SEO from '../../components/ui/SEO'
 
 const ContactPage = () => {
   const { t } = useTranslation()
@@ -26,6 +27,7 @@ const ContactPage = () => {
 
   return (
     <div className="max-w-2xl mx-auto px-6 py-12">
+      <SEO title="Contact" description="Hubungi Ryansyah Putra untuk kolaborasi." />
       <div className="text-center mb-12">
         <h1 className="text-4xl font-bold text-gray-800 dark:text-white mb-4">
           {t('contact.title')}

@@ -2,6 +2,7 @@ import { useTranslation } from 'react-i18next'
 import { useEducations } from '../../hooks/useEducation'
 import { useWorkHistories } from '../../hooks/useWork'
 import Loading from '../../components/ui/Loading'
+import SEO from '../../components/ui/SEO'
 
 const AboutPage = () => {
   const { t } = useTranslation()
@@ -9,7 +10,9 @@ const AboutPage = () => {
   const { data: works, isLoading: loadWork } = useWorkHistories()
 
   return (
+
     <div className="max-w-4xl mx-auto px-6 py-12">
+      <SEO title="About" description="Tentang Ryansyah Putra — Flutter Developer." />
       {/* Bio */}
       <section className="mb-16">
         <h1 className="text-4xl font-bold text-gray-800 dark:text-white mb-6">

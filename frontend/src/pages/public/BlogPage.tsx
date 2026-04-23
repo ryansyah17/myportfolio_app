@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next'
 import { useBlogs } from '../../hooks/useBlog'
 import Loading from '../../components/ui/Loading'
 import i18n from '../../i18n'
+import SEO from '../../components/ui/SEO'
 
 const BlogPage = () => {
   const { t } = useTranslation()
@@ -10,6 +11,7 @@ const BlogPage = () => {
 
   return (
     <div className="max-w-4xl mx-auto px-6 py-12">
+      <SEO title="Blog" description="Tulisan tentang teknologi dan pengalaman." />
       <div className="text-center mb-12">
         <h1 className="text-4xl font-bold text-gray-800 dark:text-white mb-4">
           {t('blog.title')}

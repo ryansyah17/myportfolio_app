@@ -2,6 +2,7 @@ import { useTranslation } from 'react-i18next'
 import { usePortfolios } from '../../hooks/usePortfolio'
 import PortfolioCard from '../../components/ui/PortfolioCard'
 import Loading from '../../components/ui/Loading'
+import SEO from '../../components/ui/SEO'
 
 const PortfolioPage = () => {
   const { t } = useTranslation()
@@ -9,6 +10,10 @@ const PortfolioPage = () => {
 
   return (
     <div className="max-w-6xl mx-auto px-6 py-12">
+      <SEO
+        title="Portfolio"
+        description="Kumpulan project yang pernah dikerjakan Ryansyah Putra."
+      />
       <div className="text-center mb-12">
         <h1 className="text-4xl font-bold text-gray-800 dark:text-white mb-4">
           {t('portfolio.title')}

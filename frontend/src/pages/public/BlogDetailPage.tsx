@@ -1,6 +1,7 @@
 import { useParams, Link } from "react-router-dom";
 import { useBlogBySlug } from "../../hooks/useBlog";
 import Loading from "../../components/ui/Loading";
+import SEO from "../../components/ui/SEO";
 
 const BlogDetailPage = () => {
   const { slug = "" } = useParams();
@@ -25,6 +26,14 @@ const BlogDetailPage = () => {
 
   return (
     <div className="max-w-3xl mx-auto px-6 py-12">
+      {blog && (
+        <SEO
+          title={blog.title}
+          description={blog.excerpt || blog.title}
+          image={blog.image_url || undefined}
+          url={`http://localhost:5173/blog/${blog.slug}`}
+        />
+      )}
       <Link
         to="/blog"
         className="text-blue-600 text-sm hover:underline mb-8 block"

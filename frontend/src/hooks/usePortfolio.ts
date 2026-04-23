@@ -1,42 +1,39 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
 import { portfolioService } from '../services/portfolioService'
+import toast from 'react-hot-toast'
+import type { Portfolio } from '../types'
 
-// Hook untuk ambil semua portfolio
-export const usePortfolios = () => {
-  return useQuery({
-    queryKey: ['portfolios'],
-    queryFn: portfolioService.getAll,
-  })
-}
+export const usePortfolios = () => useQuery({
+  queryKey: ['portfolios'],
+  queryFn: portfolioService.getAll,
+})
 
-// Hook untuk ambil portfolio by ID
-export const usePortfolio = (id: number) => {
-  return useQuery({
-    queryKey: ['portfolios', id],
-    queryFn: () => portfolioService.getById(id),
-    enabled: !!id, // hanya fetch kalau id ada
-  })
-}
+export const usePortfolio = (id: number) => useQuery({
+  queryKey: ['portfolios', id],
+  queryFn: () => portfolioService.getById(id),
+  enabled: !!id,
+})
 
-// Hook untuk create (dipakai di admin nanti)
 export const useCreatePortfolio = () => {
-  const queryClient = useQueryClient()
+  const qc = useQueryClient()
   return useMutation({
     mutationFn: portfolioService.create,
     onSuccess: () => {
-      // Otomatis refresh list setelah create
-      queryClient.invalidateQueries({ queryKey: ['portfolios'] })
+      qc.invalidateQueries({ queryKey: ['portfolios'] })
+      toast.success('Portfolio berhasil ditambahkan!')
     },
+    onError: () => toast.error('Gagal menambahkan portfolio.'),
   })
 }
 
-// Hook untuk delete (dipakai di admin nanti)
 export const useDeletePortfolio = () => {
-  const queryClient = useQueryClient()
+  const qc = useQueryClient()
   return useMutation({
     mutationFn: portfolioService.delete,
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['portfolios'] })
+      qc.invalidateQueries({ queryKey: ['portfolios'] })
+      toast.success('Portfolio berhasil dihapus.')
     },
+    onError: () => toast.error('Gagal menghapus portfolio.'),
   })
 }
