@@ -1,0 +1,60 @@
+{
+    "nav": {
+        "home": "Beranda",
+        "portfolio": "Portfolio",
+        "blog": "Blog",
+        "about": "Tentang",
+        "contact": "Kontak",
+        "hire": "Hire Me"
+    },
+    "home": {
+        "badge": "Tersedia untuk bekerja",
+        "greeting": "Halo, Saya",
+        "bio": "Flutter Developer yang sedang belajar Go & React. Saya membangun aplikasi mobile dan web yang clean dan fungsional.",
+        "cta_portfolio": "Lihat Portfolio",
+        "cta_contact": "Hubungi Saya",
+        "featured_title": "Featured Projects",
+        "featured_link": "Lihat Semua"
+    },
+    "portfolio": {
+        "title": "Portfolio",
+        "subtitle": "Kumpulan project yang pernah saya kerjakan.",
+        "empty": "Belum ada portfolio.",
+        "live": "Live Demo",
+        "github": "GitHub"
+    },
+    "blog": {
+        "title": "Blog",
+        "subtitle": "Tulisan tentang teknologi dan pengalaman.",
+        "empty": "Belum ada artikel.",
+        "back": "← Kembali ke Blog"
+    },
+    "about": {
+        "title": "Tentang Saya",
+        "role": "Flutter Developer · Go & React Learner",
+        "bio": "Saya adalah seorang developer yang passionate dalam membangun aplikasi yang bermanfaat. Berawal dari Flutter untuk mobile development, kini saya memperluas skill ke Go untuk backend dan React untuk web frontend.",
+        "work_title": "Pengalaman Kerja",
+        "edu_title": "Pendidikan",
+        "current": "Sekarang",
+        "empty_work": "Belum ada data pengalaman kerja.",
+        "empty_edu": "Belum ada data pendidikan."
+    },
+    "contact": {
+        "title": "Kontak",
+        "subtitle": "Punya pertanyaan atau ingin bekerja sama? Kirim pesan!",
+        "name": "Nama",
+        "email": "Email",
+        "subject": "Subject",
+        "message": "Pesan",
+        "send": "Kirim Pesan",
+        "sending": "Mengirim...",
+        "success": "Pesan berhasil dikirim! Saya akan segera menghubungi kamu.",
+        "error": "Gagal mengirim pesan. Coba lagi."
+    },
+    "common": {
+        "loading": "Memuat...",
+        "error": "Terjadi kesalahan.",
+        "backend_error": "Gagal memuat data. Pastikan backend berjalan.",
+        "empty": "Tidak ada data."
+    }
+}

@@ -1,0 +1,60 @@
+{
+    "nav": {
+        "home": "Home",
+        "portfolio": "Portfolio",
+        "blog": "Blog",
+        "about": "About",
+        "contact": "Contact",
+        "hire": "Hire Me"
+    },
+    "home": {
+        "badge": "Available for work",
+        "greeting": "Hi, I'm",
+        "bio": "A Flutter Developer learning Go & React. I build clean and functional mobile and web applications.",
+        "cta_portfolio": "View Portfolio",
+        "cta_contact": "Contact Me",
+        "featured_title": "Featured Projects",
+        "featured_link": "View All"
+    },
+    "portfolio": {
+        "title": "Portfolio",
+        "subtitle": "A collection of projects I have worked on.",
+        "empty": "No portfolio yet.",
+        "live": "Live Demo",
+        "github": "GitHub"
+    },
+    "blog": {
+        "title": "Blog",
+        "subtitle": "Writings about technology and experience.",
+        "empty": "No articles yet.",
+        "back": "← Back to Blog"
+    },
+    "about": {
+        "title": "About Me",
+        "role": "Flutter Developer · Go & React Learner",
+        "bio": "I am a developer passionate about building useful applications. Starting from Flutter for mobile development, I am now expanding my skills to Go for backend and React for web frontend.",
+        "work_title": "Work Experience",
+        "edu_title": "Education",
+        "current": "Present",
+        "empty_work": "No work experience yet.",
+        "empty_edu": "No education data yet."
+    },
+    "contact": {
+        "title": "Contact",
+        "subtitle": "Have a question or want to work together? Send a message!",
+        "name": "Name",
+        "email": "Email",
+        "subject": "Subject",
+        "message": "Message",
+        "send": "Send Message",
+        "sending": "Sending...",
+        "success": "Message sent successfully! I will get back to you soon.",
+        "error": "Failed to send message. Please try again."
+    },
+    "common": {
+        "loading": "Loading...",
+        "error": "Something went wrong.",
+        "backend_error": "Failed to load data. Make sure the backend is running.",
+        "empty": "No data available."
+    }
+}

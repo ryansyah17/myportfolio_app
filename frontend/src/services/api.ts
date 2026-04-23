@@ -1,6 +1,5 @@
 import axios from 'axios'
 
-// Base URL mengarah ke backend Go kita
 const api = axios.create({
   baseURL: 'http://localhost:8080/api',
   headers: {
@@ -8,13 +7,33 @@ const api = axios.create({
   },
 })
 
-// Interceptor — otomatis tambah token JWT ke setiap request (dipakai di phase 4)
 api.interceptors.request.use((config) => {
-  const token = localStorage.getItem('token')
-  if (token) {
-    config.headers.Authorization = `Bearer ${token}`
+  // Zustand persist menyimpan dengan struktur: { state: { token: "..." } }
+  const raw = localStorage.getItem('auth-storage')
+  if (raw) {
+    try {
+      const parsed = JSON.parse(raw)
+      const token = parsed?.state?.token
+      if (token) {
+        config.headers.Authorization = `Bearer ${token}`
+      }
+    } catch {
+      // localStorage rusak, abaikan
+    }
   }
   return config
 })
+
+// Interceptor response — kalau 401 redirect ke login
+api.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    if (error.response?.status === 401) {
+      localStorage.removeItem('auth-storage')
+      window.location.href = '/admin/login'
+    }
+    return Promise.reject(error)
+  }
+)
 
 export default api

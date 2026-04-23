@@ -26,6 +26,7 @@ const AdminLayout = () => {
             { label: 'Blog', path: '/admin/blog' },
             { label: 'Education', path: '/admin/education' },
             { label: 'Work History', path: '/admin/work' },
+            { label: 'Inbox', path: '/admin/inbox' },
           ].map((item) => (
             <Link
               key={item.path}

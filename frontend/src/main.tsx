@@ -4,14 +4,15 @@ import { BrowserRouter } from 'react-router-dom'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import App from './App.tsx'
 import './index.css'
+import './i18n/index'
+import { initTheme } from './store/themeStore'
 
-// QueryClient untuk caching data dari API
+// Terapkan dark mode sebelum render agar tidak ada flash
+initTheme()
+
 const queryClient = new QueryClient({
   defaultOptions: {
-    queries: {
-      retry: 1,
-      staleTime: 5 * 60 * 1000, // data dianggap fresh selama 5 menit
-    },
+    queries: { retry: 1, staleTime: 5 * 60 * 1000 },
   },
 })
 

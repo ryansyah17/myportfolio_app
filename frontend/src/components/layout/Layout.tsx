@@ -3,9 +3,8 @@ import Navbar from './Navbar'
 import Footer from './Footer'
 
 const Layout = () => (
-  <div className="min-h-screen bg-gray-50">
+  <div className="min-h-screen bg-gray-50 dark:bg-gray-950 transition-colors duration-300">
     <Navbar />
-    {/* pt-20 agar konten tidak tertutup navbar fixed */}
     <main className="pt-20">
       <Outlet />
     </main>
